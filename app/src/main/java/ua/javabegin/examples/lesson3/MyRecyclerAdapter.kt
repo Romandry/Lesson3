@@ -14,10 +14,10 @@ import kotlinx.android.synthetic.main.recyclerview_item.view.*
 // Описывается способ связи между данными и компонентом. В конструкторе передаем список строк
 class MyRecyclerAdapter(var context: Context): RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>() {
 
-    var bookListRecyclerAdp = mutableListOf<ResponseItem>()
+    var eventListRecyclerAdp = mutableListOf<ResponseItem>()
 
-    fun setBookListRecyclerAdapter(books: List<ResponseItem>) {
-        this.bookListRecyclerAdp = books.toMutableList()
+    fun setEventListRecyclerAdapter(events: List<ResponseItem>) {
+        this.eventListRecyclerAdp = events.toMutableList()
 
         notifyDataSetChanged()// ждем изменеий
     }
@@ -39,7 +39,7 @@ class MyRecyclerAdapter(var context: Context): RecyclerView.Adapter<MyRecyclerAd
 
     // заполняем view item который уже находится в памяти
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val responceItem = bookListRecyclerAdp[position]
+        val responceItem = eventListRecyclerAdp[position]
         holder.textView_1?.text = responceItem.cityName
 
         holder.cardView.setOnClickListener {
@@ -47,7 +47,7 @@ class MyRecyclerAdapter(var context: Context): RecyclerView.Adapter<MyRecyclerAd
         }
     }
 
-    override fun getItemCount(): Int = bookListRecyclerAdp.size
+    override fun getItemCount(): Int = eventListRecyclerAdp.size
 
     /*
     * когда создается первый item запускается onCreateViewHolder

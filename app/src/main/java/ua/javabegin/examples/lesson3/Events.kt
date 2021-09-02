@@ -2,7 +2,7 @@ package ua.javabegin.examples.lesson3
 
 import com.google.gson.annotations.SerializedName
 
-data class Book (
+data class Events (
     @SerializedName("response") val firstObject : FirstObject
 )
 data class FirstObject (

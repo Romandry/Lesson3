@@ -1,28 +1,37 @@
 package ua.javabegin.examples.lesson3
 
-
-
-
-
-
-
-
-
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 // объявляем в конструкторе repository
 class MainViewModel constructor(private val repository: MainRepository): ViewModel() {
 
-    val bookList = liveData(Dispatchers.IO) {
-        val response = repository.getAllBooksRepository()
+    // Вместо enqueue используем Coroutine
+    val eventList = liveData(Dispatchers.IO) {
+        val response = repository.getAllEventsRepository() // делаем http запрос и получаем объект обвертку типа call
         emit(response)
     }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    fun getAllBooksViewModel() {
 
@@ -39,5 +48,3 @@ class MainViewModel constructor(private val repository: MainRepository): ViewMod
 //            }
 //        })
 //    }
-
-}
